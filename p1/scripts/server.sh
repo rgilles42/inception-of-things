@@ -1,3 +1,1 @@
-mkdir -p ~/.ssh
-cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
-chmod -R 400 ~/.ssh
+curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --advertise-address=192.168.56.110 --node-ip=192.168.56.110
