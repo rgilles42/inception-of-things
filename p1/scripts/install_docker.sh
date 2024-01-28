@@ -15,7 +15,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update
 
 echo [4/5] Installing Docker packages
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce=5:24.0.7-1~debian.12~bookworm docker-ce-cli=5:24.0.7-1~debian.12~bookworm containerd.io=1.6.26-1 docker-buildx-plugin=0.11.2-1~debian.12~bookworm docker-compose-plugin=2.21.0-1~debian.12~bookworm docker-ce-rootless-extras=5:24.0.7-1~debian.12~bookworm
 
 echo [5/5] Creating docker group and adding $USER
 sudo groupadd docker
