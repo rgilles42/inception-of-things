@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-p3-argocd
+  name: p3-argocd-ingress
   namespace: argocd
 spec:
   rules:
