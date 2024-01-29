@@ -11,6 +11,7 @@ RUN sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/
 
 RUN adduser --disabled-password vagrant
 RUN passwd -u vagrant
+RUN echo 'alias k=kubectl' >> /home/vagrant/.profile
 RUN echo 'vagrant ALL = NOPASSWD: ALL' > /etc/sudoers.d/vagrant
 RUN chmod 440 /etc/sudoers.d/vagrant
 
