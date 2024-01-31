@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bonus-gitlab-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/gitlab"
+        backend:
+          service:
+            name: bonus-gitlab-service
+            port:
+              number: 80
+

@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p3-application
+spec:
+  project: default
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  source:
+    targetRevision: HEAD
+    repoURL: https://github.com/rgilles42/iot-p3-deployment.git
+    path: manifest
+  syncPolicy:
+    automated:
+      selfHeal: true
+
