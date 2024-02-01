@@ -25,10 +25,18 @@ sleep 5
 echo [5/5] Ensuring launch and Deploying GitLab Ingress
 kubectl wait --for=condition=Ready pods --all -n gitlab --timeout -1s
 kubectl apply -n gitlab -f confs/gitlab/ingress.yaml
+! (cat /etc/hosts | grep -q gitlab) && echo "127.0.0.1 bonus-gitlab-service.gitlab.svc.cluster.local" | sudo tee -a /etc/hosts > /dev/null
 
 ARGOPW=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath={.data.password} | base64 -d)
 echo "The ArgoCD 'admin' password is '$ARGOPW'."
-GITLABPW=$(kubectl exec -n gitlab $(kubectl get pods -n gitlab -o name) -- cat /etc/gitlab/initial_root_password)
+
+echo -n Waiting for gitlab to launch
+while ! kubectl exec -n gitlab $(kubectl get pods -n gitlab -o name) -- gitlab-ctl status | grep nginx &>/dev/null ; do
+	echo -n .
+	sleep 10
+done
+echo
+GITLABPW=$(kubectl exec -n gitlab $(kubectl get pods -n gitlab -o name) -- cat /etc/gitlab/initial_root_password | grep Password:)
 echo "The GitLab initial root password is '$GITLABPW'."
 
 

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: p3-application
+  name: bonus-application
 spec:
   project: default
   destination:
@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     targetRevision: HEAD
-    repoURL: https://github.com/rgilles42/iot-p3-deployment.git
+    repoURL: http://bonus-gitlab-service.gitlab.svc.cluster.local/root/iot-p3-deployment.git
     path: manifest
   syncPolicy:
     automated:

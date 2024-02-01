@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         env:
         - name: GITLAB_OMNIBUS_CONFIG
-          value: "external_url 'http://localhost:8080/gitlab'; puma['port'] = 8081;"
+          value: "external_url 'http://bonus-gitlab-service.gitlab.svc.cluster.local:8080'; puma['port'] = 8081;"
 
 ---
 

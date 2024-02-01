@@ -4,6 +4,16 @@ metadata:
   name: bonus-gitlab-ingress
 spec:
   rules:
+  - host: bonus-gitlab-service.gitlab.svc.cluster.local
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: bonus-gitlab-service
+            port:
+              number: 80
   - http:
       paths:
       - pathType: Prefix
@@ -13,4 +23,3 @@ spec:
             name: bonus-gitlab-service
             port:
               number: 80
-
