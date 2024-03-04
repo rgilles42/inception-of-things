@@ -23,5 +23,7 @@ sudo usermod -aG docker $USER
 
 echo
 echo Docker has been succesfully installed and user $USER has been added to the docker group.
-echo Please relog in order to refresh your groups and use docker without root privileges.
-echo Alternatively, you can run \`newgrp docker\`.
+echo Restarting now........
+sleep 5
+sudo systemctl poweroff --now
+
