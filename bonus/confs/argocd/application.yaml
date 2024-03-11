@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     targetRevision: HEAD
-    repoURL: http://bonus-gitlab-service.gitlab.svc.cluster.local/root/iot-p3-deployment.git
+    repoURL: http://bonus-gitlab-service.gitlab.svc.cluster.local/root/iot-p3-deployment-mclaudel.git
     path: manifest
   syncPolicy:
     automated:
